@@ -137,3 +137,24 @@ echo " Install dir: $INSTALL_DIR"
 echo " Conda env: $CONDA_ENV_NAME"
 echo " Python: $CONDA_PYTHON"
 echo "======================================"
+
+# --- Ensure conda is available ---
+if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+    source "$HOME/miniconda3/etc/profile.d/conda.sh"
+else
+    echo "Conda not found!"
+    exit 1
+fi
+
+# --- Activate environment ---
+conda activate "$CONDA_ENV_NAME"
+
+# --- Patch flow binary with correct RPATH (only if not already present) ---
+if ! otool -l "$INSTALL_DIR/bin/flow" | grep -q "$CONDA_PREFIX/lib"; then
+    install_name_tool -add_rpath "$CONDA_PREFIX/lib" "$INSTALL_DIR/bin/flow"
+    echo "RPATH added."
+else
+    echo "RPATH already exists. Skipping."
+fi
+
+echo "RPATH patch step completed."
