@@ -45,9 +45,7 @@ By the end of this unit, you should be able to:
 
 ## 👨‍🏫 Teaching Team
 
-- **Vahid Niasar** – Module Convenor  
-  Chair in Porous Media Physics and Subsurface Engineering  
-  Impres Lab  
+- **Dr Lin Ma; Dr Mehrdad Vasheghani Farahani** – Module Convenor  
 
 - **Arash Pourakaberian** – GTA  
   Lead tutorials and numerical simulation sessions  
